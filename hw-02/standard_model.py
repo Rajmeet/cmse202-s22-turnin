@@ -205,5 +205,3 @@ class CompositeParticle(ElementaryParticle):
             self.charge += particle.charge
             self.mass += particle.mass
             self.spin += particle.spin
-
-

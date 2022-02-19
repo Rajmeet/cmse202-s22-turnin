@@ -37,12 +37,13 @@ class Universe:
         self.check_interaction()
 
     def move_particles(self):
-        """I NEED A DOCSTRING!"""
+        """Iterates over every particle and calls the .move() a method in ElementaryParticle
+        which randomly moves the particle."""
         for ip in self._all_particles:
             ip.move()
 
     def boundary_conditions(self):
-        """I NEED A DOCSTRING!"""
+        """Iterates over every particle and ensures that the particle remains within the bounary of the board."""
         for ip in self._all_particles:
             if ip.x > self.width:
                 ip.x -= self.width
@@ -57,7 +58,7 @@ class Universe:
                 ip.y += self.height
 
     def draw(self):
-        """I NEED A DOCSTRING!"""
+        """Iterates over every particle (fermion and boson) and plots a scatterplot with their position."""
         for ip in self.fermions:
             plt.scatter(ip.x, ip.y, marker="o", c = "b")
 
@@ -65,7 +66,7 @@ class Universe:
             plt.scatter(ip.x, ip.y, marker="*", c = "r")
 
     def check_interaction(self):
-        """I NEED A DOCSTRING!"""
+        """Checks how the bosons and fermions are interacting with each other. """
 
         for ip1, p1 in enumerate(self.fermions):
             for ip2, p2 in enumerate(self.fermions[ip1:]):
