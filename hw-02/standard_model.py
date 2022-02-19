@@ -2,45 +2,38 @@
 
 import numpy as np
 
+# +
+"""Module containing the elementary particle classes. """
+
+import numpy as np
+
 
 class ElementaryParticle:
     """ Elementary particle class.
-
     Attributes
     ----------
     x : float
         x-position of the particle.
-
     y: float
         y-position of the particle.
-
     ptype: str
         Statistics obeyed by the particle.
-
     charge : float
         Electric charge of the particle.
-
     mass : float
         Rest mass in MeV of the particle.
-
     spin: float
         Spin of the particle.
-
     Methods
     -------
     info():
         Prints particles information.
-
     is_antiparticle(other):
         Check if the other is this particle anti-particle
-
     move()
         Move the particle randomly.
-
     place_at(coord):
         Place the particle at passed coord.
-
-
     """
     x = None
     y = None
@@ -48,18 +41,14 @@ class ElementaryParticle:
     
     def __init__(self, charge, mass, spin):
         """Initialize the particle's attributes.
-
         Parameters
         ----------
         charge : float
             Electric charge of the particle.
-
         mass : float
             Rest mass in MeV of the particle.
-
         spin: float
             Spin of the particle.
-
         """
         self.charge = charge
         self.mass = mass
@@ -76,7 +65,6 @@ class ElementaryParticle:
 
     def place_at(self, coord):
         """Place particles at coordinates (x,y).
-
         Parameters
         ----------
         coord: tuple
@@ -124,23 +112,22 @@ class ElementaryParticle:
             raise TypeError("Not a particle")
 
 
+# -
+
 class Boson(ElementaryParticle):
     """
     Boson: elementary particle that obeys Bose-Einstein statistics.
     This class inherits the ElementaryParticle class with all its attributes and methods.
     Further attributes and methods are
-
     Attributes
     ----------
     name: str
     Name of the particle.
-
     Methods
     -------
     check_existence()
     Checks whether this Boson can exists by calling its parent's method check_type()
     Raises a ValueError if check_type() returns "fermion"
-
     """
     def __init__(self, name, charge, mass, spin):
         self.name = name
@@ -154,24 +141,22 @@ class Boson(ElementaryParticle):
             print("This particle can exist")
 
 
+
 # +
 class Fermion(ElementaryParticle):
     """
     Fermion: elementary particle that obeys Fermi-Dirac statistics.
     This class inherits the ElementaryParticle class with all its attributes and methods.
     Further attributes and methods are
-
     Attributes
     ----------
     name: str
     Name of the particle.
-
     Methods
     -------
     check_existence()
     Checks whether this Fermion can exists by calling its parent's method check_type()
     Raises a ValueError if the check_type() returns "boson"
-
     is_antiparticle(other):
     Check whether other is the anti-particle of this Fermion 
     by checking if other is an instance of Fermion first.
@@ -196,30 +181,24 @@ class Fermion(ElementaryParticle):
 #            raise TypeError("Not a particle")
 
 
+
 # -
 
 class CompositeParticle(ElementaryParticle):
     """
     A particle composed of several elementary particles.
-
     Parameters
     ----------
-
     name: str
         Name of the particle.
-
     particles : list
         List of particles objects that compose this particle.
-
     charge : float
         Electric charge of the particle.
-
     mass : float
         Rest mass in MeV of the particle.
-
     spin: float
         Spin of the particle.
-
     """
     def __init__(self, name, particles):
         self.name = name
@@ -230,3 +209,5 @@ class CompositeParticle(ElementaryParticle):
             self.charge += particle.charge
             self.mass += particle.mass
             self.spin += particle.spin
+
+
