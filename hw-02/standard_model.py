@@ -135,11 +135,9 @@ class Boson(ElementaryParticle):
         super().__init__(charge, mass, spin)
     
     def check_existence(self):
-        if self.check_type() == "fermion":
-            raise ValueError("This particle cannot exist")
-        else:
-            print("This particle can exist")
-
+        check = check_type()
+        if check == "fermion":
+            raise ValueError("fermion particle cannot exist")
 
 
 # +
@@ -167,10 +165,9 @@ class Fermion(ElementaryParticle):
         super().__init__(charge, mass, spin)
 
     def check_existence(self):
-        if self.check_type() == "boson":
-            raise ValueError("This particle cannot exist")
-        else:
-            print("This particle can exist")
+        check = check_type()
+        if check == "boson":
+            raise ValueError("boson particle cannot exist")
 
     def is_antiparticle(self, other):
         if isinstance(other, Fermion) and self.charge == -other.charge:
@@ -179,7 +176,6 @@ class Fermion(ElementaryParticle):
             return False
         
 #            raise TypeError("Not a particle")
-
 
 
 # -
